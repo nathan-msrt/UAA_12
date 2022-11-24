@@ -8,37 +8,33 @@
 </head>
 <body>
     <?php echo "Hello World!" ?>
+    
     <h1>EXERCICE 1</h1>
-    <?php
-        for ($i = 1; $i <= 10; $i++) {
-            echo "<p> le nombre vaut ". $i ."</p>";
-        }
-     ?>
-     <h1>EXERCICE 2</h1>
-    <?php
-        for ($i = 1; $i <= 10; $i++) {
-            if ($i != 3){
-                echo "<p> le nombre vaut ". $i ."</p>";
-            }
-            
-        }
-    ?>
+    <?php for ($i = 1; $i <= 10; $i++) : ?>
+        <p> le nombre vaut <?=  $i ?> </p>
+    <?php endfor ?>
+     
+    <h1>EXERCICE 2</h1>
+    <?php for ($i = 1; $i <= 10; $i++) : ?>
+        <?php if ($i != 3) : ?>
+             <p> le nombre vaut <?= $i ?> </p>
+        <?php endif ?>
+    <?php endfor ?>
+    
     <h1>EXERCICE 3</h1>
-    <?php
-        for ($i = 1; $i <= 10; $i++) {
-            if ($i < 4 || $i > 7){
-                echo "<p> le nombre vaut ". $i ."</p>";
-            }
-            
-        }
-    ?>
+    <?php for ($i = 1; $i <= 10; $i++) :?> 
+        <?php if ($i < 4 || $i > 7) : ?>
+            <p> le nombre vaut <?= $i ?> </p>
+        <?php endif ?>
+    <?php endfor ?>      
+   
     <h1>EXERCICE 4</h1>
     <?php
-        $n=-5;
-        echo "<p> La valeur absolue de ". $n ."</p>";
-        
+        $nbr1 = -5;
+        $nbr2 = 10;   
     ?>
-    
+    <p> La valeur absolue de <?= $nbr1 ?> vaut <?= abs($nbr1) ?> </p>
+    <p> La valeur absolue de <?= $nbr2 ?> vaut <?= abs($nbr2) ?> </p>
 
            
 </body>
