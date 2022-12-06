@@ -1,0 +1,98 @@
+body{
+    margin: auto;
+}
+.partieduhaut{
+    display: flex;
+    background-color: #0D91F5;
+    margin: auto;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 20px;
+}
+.partieduhaut ul li a{
+    border: 2px solid ;
+}
+.partiecentrale{
+    background-color: #afc8db;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-top: 20px;
+}
+.partiedubas{
+    display: flex;
+    background-color: #0D91F5;
+    margin: auto;
+    justify-content: space-between;
+}
+.partiedubas p{
+    color: white;
+    background-color: #899cab;
+    border-radius: 50%;
+    border: 2px solid #324d61;
+    padding: 20px;
+}
+ul li a{
+    text-decoration-line: none;
+    list-style-type: none;
+    color: white;
+    background-color: #899cab;
+    border-radius: 50%;
+    border: 2px solid #324d61;
+    padding: 10px;
+}
+.bouton{
+    background-color: #afc8db;
+    display: flex;
+    justify-content: center;
+}
+.bouton input{
+    background-color: #324d61;
+    color: white;
+    border: 2px solid #899cab;
+    border-radius: 10px;
+    font-size: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.formulaire{
+    width: 40%;
+}
+.deuxformulaire{
+    flex-grow: 5;
+    display: flex;
+    justify-content: space-evenly;
+}
+.formulaire legend{
+    text-align: center;
+    background-color: #324d61;
+    color: white;
+    font-size: 2em;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.formulaire label{
+    text-decoration: underline;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: rgb(118, 118, 118);
+}
+.formulaire input{
+    border-radius: 10px;
+    padding: 5px;
+}
+.image{
+    width: 120px;
+}
+.image img{
+    padding: 1px;
+    margin: 1px;
+}
+.formulaire textarea{
+    border-radius: 10px;
+}
+.fonction{
+    display: flex;
+}
