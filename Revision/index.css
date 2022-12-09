@@ -1,0 +1,56 @@
+body{
+    background-color: antiquewhite;
+    margin: auto;
+}
+.menu{
+    background-color: burlywood;
+    font-size: 1.2em;
+}
+legend{
+    color: burlywood;
+}
+.flexcontainer{
+    display: flex;
+  }
+ul li a{
+    list-style-type: none;
+    text-decoration-line: none;
+    color: brown;
+    margin: 0 auto;
+  }
+  ul li{
+    list-style-type: none;
+    padding:  20px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  .justify-content{
+    justify-content: space-around;
+  }
+.partiecentrale{
+    width: 80%;
+}
+h1{
+    color: brown;
+    text-decoration: underline;
+}
+.bouton input{
+    background-color: greenyellow;
+}
+
+.cadre input{
+    border-radius: 10px;
+}
+.cadre label{
+    font-size: 1.5em;
+}
+.formulaire{
+    text-align: center;
+}
+a :hover{
+    box-shadow: 2px 2px black;
+}
+
