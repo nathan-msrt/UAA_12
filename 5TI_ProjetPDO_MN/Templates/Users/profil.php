@@ -3,15 +3,15 @@
 <ol>
     <div>
         <li>Nom</li>
-        <p>de Mahieu</p>
+        <p><?php $_SESSION["user"] -> utilisateurNom ?></p>
     </div>
     <div>
         <li>Prénom</li>
-        <p>Benoit</p>
+        <p><?php $_SESSION["user"] -> utilisateurPrenom ?></p>
     </div>
     <div>
         <li>Adresse postale</li>
-        <p>Place de la route, 5151 Anvers</p>
+        <p>Rue pichelin n°8c, 5140 Tongrinne</p>
     </div>
     <div>
         <li>Photo de profil</li>
