@@ -30,6 +30,12 @@ if($uri === "/inscription"){
         UpdateUser($pdo);
         UpdateSession($pdo);
         header('location:/profil');
+    }elseif (isset($_POST['btnSuppression'])) {
+        DeleteUsersBiens($pdo);
+        DeleteUser($pdo);
+        var_dump('ok');
+        session_destroy();
+        header('location:/');
     }
     require_once "Templates/users/inscriptionOrEditProfil.php";
 }

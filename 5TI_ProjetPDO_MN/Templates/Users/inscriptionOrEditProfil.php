@@ -28,8 +28,10 @@
             
             <?php if(isset($messageErrorLogin["mot_de_passe"])) : ?><p><?= str_replace("_", " ", $messageErrorLogin["mot_de_passe"] ) ?> </p> <?php endif ?> 
         </div>
-        <div>
+        <div class = "flex" >
             <input type="submit" name="btnEnvoi" class="btn btn-primary" value = "Envoyer"></input>
+            <?php if(isset($_SESSION['user'])) : ?><input type="submit" name="btnEnvoi" class="btn btn-primary" value = "Supprimer"></input><?php endif ?>
         </div>
+        
     </fieldset>
 </form>
