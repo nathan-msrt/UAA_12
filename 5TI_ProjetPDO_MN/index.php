@@ -34,7 +34,7 @@ session_start();
     </main>
     <footer>
         <div class="flex space-between align-item-center">
-            <p><a href="https://www.christinesurges.be/" target="_blank" title="Aller à l'agence">Voir d'autres jeux</a></p>
+        <p id="lienAgence"><a href="https://www.jeuxvideo.com/meilleurs/moment/" target="_blank" title="Aller à l'agence">Les jeux du moments</a></p>
             <div>
                 <img class="imageIcon" src="Images/icon1.jpg" alt="image twitter">
                 <img class="imageIcon" src="Images/icon2.jpg" alt="image facebook">

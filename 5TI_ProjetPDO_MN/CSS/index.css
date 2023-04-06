@@ -1,3 +1,7 @@
+.photo{
+    height: 250px;
+    position: relative;
+}
 body {
     background-color: white;
     margin: 0;
@@ -11,10 +15,12 @@ main {
 /* Mettre les titres h1 en couleur bleue, taille 50px et la police en Arial */
 h1 {
     color: black;
-    font-size: 50px;
+    font-size: 100px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: underline;
     text-align: center;
+    margin-bottom: -10px;
+    font-style: oblique;
 }
 
 h2 {
@@ -47,13 +53,15 @@ ol li {
 }
 
 .btn {
-    width: 100px;
-    border-radius: 70%;
-    cursor: pointer;
-    padding: 3px;
     display: block;
-    margin: 10px auto;
-    line-height: 40px;
+ border: solid white;
+ border-width: 0 10px;
+ border-radius: 0;
+ background: green;
+ color: white;
+ font-size: 18px;
+ margin: -60px auto 15px;
+ padding: 15px;
 }
 
 .btn-page {
@@ -63,8 +71,8 @@ ol li {
 }
 
 .btn-primary {
-    background-color: rgb(94, 94, 231);
-    color: whitesmoke;
+    background-color:black;
+    color: black;
     border: 1px solid white;
 }
 
@@ -99,7 +107,7 @@ a {
 #lienAgence {
     display: inline-block;
     padding: 15px;
-    border: 2px solid black;
+    border: 2px solid white;
 }
 
 #imageLettre{
