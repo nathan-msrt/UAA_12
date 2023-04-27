@@ -1,9 +1,18 @@
 
 
    
-<div class = "photo space-around ">
-    <h1>Game Center</h1> 
-    <img src="Images/logo_game_center.png" alt="image" style=" width: 250px">
+<div class ="space-around ">
+      
+    <div>
+        <h1>Game Center</h1>
+        <div>
+            <img class="fit-picture"
+       src="/Images/Capture.PNG" alt="">
+        </div>
+    </div>
+</div>
+<div class ="border card" >
+    <a href="jeux">Ajouter un jeu sur notre site !</a>
 </div>
 <div class="flex wrap space-around">
     <div class="border card">

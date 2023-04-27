@@ -27,6 +27,7 @@ session_start();
         </ul>
     </header>
     <main>
+        
         <?php
         require_once "Controller/biensController.php";
         require_once "Controller/usersController.php";
@@ -34,7 +35,7 @@ session_start();
     </main>
     <footer>
         <div class="flex space-between align-item-center">
-        <p id="lienAgence"><a href="https://www.jeuxvideo.com/meilleurs/moment/" target="_blank" title="Aller à l'agence">Les jeux du moments</a></p>
+        <p id="lienAgence"><a href="https://www.jeuxvideo.com/meilleurs/moment/" target="_blank" title="Aller à l'agence">Les jeux du moment</a></p>
             <div>
                 <img class="imageIcon" src="Images/icon1.jpg" alt="image twitter">
                 <img class="imageIcon" src="Images/icon2.jpg" alt="image facebook">

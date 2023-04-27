@@ -5,7 +5,6 @@ require_once "Model/userModel.php";
 $uri = $_SERVER["REQUEST_URI"];
 
 if($uri === "/inscription"){
-    var_dump($_SESSION);
     if(isset($_POST["btnEnvoi"])){
         $messageErrorLogin = verifData();
         if (!($messageErrorLogin)) {
@@ -33,7 +32,6 @@ if($uri === "/inscription"){
     }elseif (isset($_POST['btnSuppression'])) {
         DeleteUsersBiens($pdo);
         DeleteUser($pdo);
-        var_dump('ok');
         session_destroy();
         header('location:/');
     }
