@@ -17,6 +17,9 @@ if($uri === "/inscription"){
        // header('location:/');
     }
     require_once "Templates/users/connexion.php";
+elseif ($uri === "/deconnexion") {
+    
+}
 }elseif ($uri === "/profil") {
     require_once "Templates/users/profil.php";
 }
