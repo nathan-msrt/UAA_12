@@ -142,7 +142,7 @@ public struct Traitement
         Console.WriteLine("");
         nbTour += 1;
     }
-    public void repiocheCarteCroupierNON(out int chiffre, out int couleur, ref int nbTour, ref int[] TabCroupier)
+   /* public void repiocheCarteCroupierNON(out int chiffre, out int couleur, ref int nbTour, ref int[] TabCroupier)
     {
         chiffre = 0;
         couleur = 0;
@@ -161,7 +161,7 @@ public struct Traitement
         Console.WriteLine("De son côté le croupier a pioché : " + chiffreCouleur);
         Console.WriteLine("");
         nbTour += 1;
-    }
+    }*/
     public void repiocheCarteCroupier(out int chiffre, out int couleur, ref int nbTour, ref int[] TabCroupier)
     {
         chiffre = 0;
@@ -182,82 +182,80 @@ public struct Traitement
         Console.WriteLine("");
         nbTour += 1;
     }
-        public void repiocheCartePseudo(out int chiffre, out int couleur, ref string pseudo, ref int nbTour, ref int[] TabCroupier)
-        {
-            chiffre = 0;
-            couleur = 0;
-            string chiffreCouleur;
+    public void repiocheCartePseudo(out int chiffre, out int couleur, ref string pseudo, ref int nbTour, ref int[,] Matrices)
+    {
+        chiffre = 0;
+        couleur = 0;
+        string chiffreCouleur;
 
 
-            aleacarte(out chiffreCouleur, out chiffre, out couleur);
-            if (chiffre > 10)
-            {
-                TabCroupier[nbTour] = 10;
-            }
-            else
-            {
-                TabCroupier[nbTour] = chiffre;
-            }
-            Console.WriteLine(pseudo + " vous avez reçu une autre carte : " + chiffreCouleur);
-            Console.WriteLine("");
-            nbTour += 1;
+        aleacarte(out chiffreCouleur, out chiffre, out couleur);
+        if (chiffre > 10)
+        {
+            Matrices[0, nbTour] = 10;
+        }
+        else
+        {
+            Matrices[0, nbTour] = chiffre;
+        }
+        Console.WriteLine(pseudo + " vous avez reçu une autre carte : " + chiffreCouleur);
+        Console.WriteLine("");
+        nbTour += 1;
+    }
+
+    public void SommeJoueur(int[,] Matrices, int numeroJoueur, out int somme)
+    {
+        somme = 0;
+        for (int i = 0; i < Matrices.GetLength(1); i++)
+        {
+            somme += Matrices[numeroJoueur, i];
         }
 
-        public void SommeJoueur(int[,] Matrices, int numeroJoueur, out int somme)
-        {
-                somme = 0;
-                for (int i = 0; i < Matrices.GetLength(1); i++)
-                {
-                    somme += Matrices[numeroJoueur, i];
-                }
+    }
 
-        }
-    
-        public void SommeCroupier(int[] TabCroupier, int croupier, out int sommeCroupier)
+    public void SommeCroupier(int[] TabCroupier, int croupier, out int sommeCroupier)
+    {
+        sommeCroupier = 0;
+        for (int i = 0; i < TabCroupier.Length; i++)
         {
-            sommeCroupier = 0;
-            for (int i = 0; i < TabCroupier.Length; i++)
-            {
-                sommeCroupier += TabCroupier[ i];
-            }
+            sommeCroupier += TabCroupier[i];
         }
-        public void VerifPoints(ref int nbTour, ref int sommePseudo, ref int sommeCroupier)
+    }
+    public void VerifPoints(ref int nbTour, ref int sommePseudo, ref int sommeCroupier)
+    {
+        if (sommeCroupier > sommePseudo)
         {
-            if (sommeCroupier > sommePseudo)
-            {
-                Console.WriteLine("Vous avez perdu avec " + sommePseudo + " points contre" + sommeCroupier + " points du croupier. Le Croupier gagne la partie.");
-            }
-            else if (sommePseudo == 21 && nbTour == 1)
-            {
-                Console.WriteLine("Vous avez gagnez avec un BlackJack vous avez couché le croupier");
-            }
-            else if (sommeCroupier == sommePseudo)
-            {
-                Console.WriteLine("Vous avez egalité avec le Croupier ( " + sommeCroupier + " )");
-            }
-            else if (sommeCroupier < sommePseudo)
-            {
-                Console.WriteLine("Vous avez gagnez avec " + sommePseudo + " points contre " + sommeCroupier + " points du croupier");
-            }
-            else if (sommeCroupier > 21 && sommePseudo <=21
-            )
-            {
-                Console.WriteLine("Vous avez gagnez avec " + sommePseudo + " points contre " + sommeCroupier + " points du croupier. Le Croupier a dépassé 21");
-            }
+            Console.WriteLine("Vous avez perdu avec " + sommePseudo + " points contre " + sommeCroupier + " points du croupier. Le Croupier gagne la partie.");
         }
-        public void LectureR(string question, out int n)
+        else if (sommePseudo == 21 && nbTour == 1)
         {
-            string nbJoueur;
-            Console.Write(question);
+            Console.WriteLine("Vous avez gagnez avec un BlackJack vous avez couché le croupier");
+        }
+        else if (sommeCroupier == sommePseudo)
+        {
+            Console.WriteLine("Vous avez egalité avec le Croupier ( " + sommeCroupier + " )");
+        }
+        else if (sommeCroupier < sommePseudo)
+        {
+            Console.WriteLine("Vous avez gagnez avec " + sommePseudo + " points contre " + sommeCroupier + " points du croupier");
+        }
+        else if (sommeCroupier > 21 && sommePseudo <= 21)
+        {
+            Console.WriteLine("Vous avez gagnez avec " + sommePseudo + " points contre " + sommeCroupier + " points du croupier. Le Croupier a dépassé 21");
+        }
+    }
+    public void LectureR(string question, out int n)
+    {
+        string nbJoueur;
+        Console.Write(question);
+        nbJoueur = Console.ReadLine();
+        while (!int.TryParse(nbJoueur, out n))
+        {
+
+            Console.WriteLine("Attention ! Vous devez taper un nombre réel !");
             nbJoueur = Console.ReadLine();
-            while (!int.TryParse(nbJoueur, out n))
-            {
-
-                Console.WriteLine("Attention ! Vous devez taper un nombre réel !");
-                nbJoueur = Console.ReadLine();
-            }
         }
-            
+    }
 }
 
 

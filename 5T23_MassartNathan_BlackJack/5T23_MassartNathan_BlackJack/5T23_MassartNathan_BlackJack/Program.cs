@@ -22,6 +22,7 @@ namespace _5T23_MassartNathan_BlackJack
             Console.WriteLine("                                      - de 10 au roi : valeur de 10 points.");
             Console.WriteLine("                                      - as : 1 ou 11 au choix du joueur.");
             Console.WriteLine("             ");
+            
             bool restart = true;
             int nbJoueur = 0;
             //string PseudoJoueur;
@@ -35,9 +36,8 @@ namespace _5T23_MassartNathan_BlackJack
             string repiocher = "";
             string pseudo = "";
             int sommePseudo = 0;
-            Traitement MesOutils = new Traitement();
+        Traitement MesOutils = new Traitement();
             while (restart)
-
             {
                 //demandez le nb de joueurs et demandez le pseudo 
                 Console.WriteLine("Combien de joueurs êtes vous ? Entrez un chiffre (max 6)");
@@ -81,7 +81,9 @@ namespace _5T23_MassartNathan_BlackJack
                     {
                         for (int y = 0; y < Matrices.GetLength(1); y++)
                         {
-                            Console.Write(Matrices[i, y] + "|");
+                            Console.Write("------" +"\n");
+                            Console.Write("|" + Matrices[i, y] + "|");
+                            Console.Write("------");
                         }
                         Console.WriteLine("");
                     }
@@ -92,8 +94,9 @@ namespace _5T23_MassartNathan_BlackJack
                     }*/
                     Console.WriteLine("");
                     Console.WriteLine("");
-                    Console.WriteLine("Appuyez sur une touche pour continuer");
+                    Console.WriteLine("Appuyez sur enter pour continuer");
                     Console.ReadLine();
+                    Console.Clear();
                     //demarage du tour 2 en distribuant une autre carte jusque ligne 92
                     MesOutils.tour2(nbJoueur, out chiffre, out couleur, ref pseudo, ref nbTour, ref Matrices);
                     MesOutils.tour2Croupier(out chiffre, out couleur, ref nbTour, ref TabCroupier);
@@ -132,117 +135,94 @@ namespace _5T23_MassartNathan_BlackJack
                         Console.Write(TabCroupier[i] + "|");
                     }*/
                     Console.WriteLine("");
+                    if (sommePseudo == 21)
+                    {
+                        Console.WriteLine("Vous avez un BlackJack. Vous avez directement gagnez !");
+                    }
                     //demande si l'utilisateur veut repiocher une carte
                     Console.WriteLine("Voulez-vous repiocher une carte ? OUI ou NON");
                     repiocher = Console.ReadLine();
-                    if (repiocher!= "NON")
+                    while (repiocher == "OUI")
                     {
+                       
                         //repioche d'une carte
-                        MesOutils.repiocheCartePseudo(out chiffre, out couleur, ref pseudo, ref nbTour, ref TabCroupier);
+                        MesOutils.repiocheCartePseudo(out chiffre, out couleur, ref pseudo, ref nbTour, ref Matrices);
+
                         for (int i = 0; i < nbJoueur; i++)
                         {
-                            MesOutils.SommeJoueur(Matrices, i, out somme);
+                            MesOutils.SommeJoueur(Matrices, i, out sommePseudo);
                             if (i == 0)
                             {
                                 //affichage des points de l'utilisateur
+
                                 Console.WriteLine(pseudo + " vous avez cumulé un total de " + sommePseudo + "points");
                                 Console.WriteLine("");
                             }
                             if (sommePseudo > 21)
                             {
                                 //fin du jeu si l'utilisateur dépasse 21
-                                Console.WriteLine("Désolé " +pseudo + " vous avez été au dessus de 21 points");
-                                restart = true;
+                                Console.WriteLine("Désolé " + pseudo + " vous avez été au dessus de 21 points. Vous avez perdu !");
+                                restart = false;
                             }
                         }
                         Console.WriteLine("");
                         //demande si l'utilisateur veut repiocher une carte
                         Console.WriteLine("Voulez-vous repiocher une carte ? OUI ou NON");
                         repiocher = Console.ReadLine();
-                        if (repiocher!= "NON")
-                        {
-                            //repioche d'une carte
-                            MesOutils.repiocheCartePseudo(out chiffre, out couleur, ref pseudo, ref nbTour, ref TabCroupier);
-                            for (int i = 0; i < nbJoueur; i++)
-                            {
-                                MesOutils.SommeJoueur(Matrices, i, out somme);
-                                if (i == 0)
-                                {
-                                    //affichage des points de l'utilisateur
-                                    Console.WriteLine(pseudo + " vous avez cumulé un total de " + sommePseudo + "points");
-                                    Console.WriteLine("");
-                                }
-                                if (sommePseudo > 21)
-                                {
-                                    //fin du jeu si l'utilisateur dépasse 21
-                                    Console.WriteLine("Désolé " + pseudo + " vous avez été au dessus de 21 points");
-                                    restart = true;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (sommeCroupier <= 15)
-                            {
-                                //repioche d'une carte
-                                MesOutils.repiocheCarteCroupier(out chiffre, out couleur, ref nbTour, ref TabCroupier);
-                            }
-                            MesOutils.SommeCroupier(TabCroupier, nbTour, out sommeCroupier);
-                            Console.WriteLine("Le croupier a cumulé un total de " + sommeCroupier + "points");
-                            Console.WriteLine("");
-                            //procedure qui donne une reponse selon la difference entre l'utilisateur et le croupier 
-                            MesOutils.VerifPoints(ref nbTour, ref sommePseudo, ref sommeCroupier);
-                            restart = true;
-                        }
                     }
-                    else
+                    if (sommeCroupier <= 15)
                     {
-                        for (int i = 0; i < nbJoueur; i++)
-                        {
-                            MesOutils.SommeJoueur(Matrices, i, out somme);
-                            if (i == 0)
-                            {
-                                //affichage des points de l'utilisateur
-                                sommePseudo = somme;
-                                Console.WriteLine(pseudo + " vous avez cumulé un total de " + sommePseudo + "points");
-                                Console.WriteLine("");
-                            }
-                        }
                         do
                         {
                             //repioche d'une carte
-                            MesOutils.repiocheCarteCroupierNON(out chiffre, out couleur, ref nbTour, ref TabCroupier);
-                            MesOutils.SommeCroupier(TabCroupier, nbTour, out sommeCroupier);
-                        } while (sommeCroupier <= 15);
-                        //affichage des points du croupier
-                        Console.WriteLine("Le croupier a cumulé un total de " + sommeCroupier + "points");
+                            MesOutils.repiocheCarteCroupier(out chiffre, out couleur, ref nbTour, ref TabCroupier);
+                        } while (sommeCroupier <=15);
+                        
+                    } 
+                    MesOutils.SommeCroupier(TabCroupier, nbTour, out sommeCroupier);
+
+                    if (sommeCroupier > 21 && sommePseudo <= 21)
+                    {
+                        //fin du jeu si le croupier a dépassé 21 et que l'utilisateur a pas dépassé 21
+                        Console.WriteLine("Le croupier a été au dessus de 21 points. Vous avez gagnez avec" + sommePseudo + "points");
                         Console.WriteLine("");
-                        MesOutils.VerifPoints(ref nbTour, ref sommePseudo, ref sommeCroupier);
-                        // demande si l'utilisateur veut recommencer
-                        Console.Write("Voulez-vous recommencer (O/N) ? ");
-                        string reponse = Console.ReadLine();
-
-                        if (reponse.ToUpper() != "N") {
-                            Matrices = new int[nbJoueur, 8];
-                            TabCroupier = new int[8];
-                            restart = true;
-
-                        }
-                        //fin
-
+                        restart = false;
                     }
-                   
+
+                    for (int i = 0; i < nbJoueur; i++)
+                    {
+                        MesOutils.SommeJoueur(Matrices, i, out somme);
+                        if (i == 0)
+                        {
+                            //affichage des points de l'utilisateur
+                            sommePseudo = somme;
+                            Console.WriteLine(pseudo + " vous avez cumulé un total de " + sommePseudo + "points");
+                            Console.WriteLine("");
+                        }
+                    }
+                    //affichage des points du croupier
+                    Console.WriteLine("Le croupier a cumulé un total de " + sommeCroupier + "points");
+                    Console.WriteLine("");
+                    MesOutils.SommeJoueur(Matrices, 0, out sommePseudo);
+                    MesOutils.VerifPoints(ref nbTour, ref sommePseudo, ref sommeCroupier);
+                    // demande si l'utilisateur veut recommencer
+                    Console.Write("Voulez-vous recommencer (O/N) ? ");
+                    string reponse = Console.ReadLine();
+
+                    if (reponse.ToUpper() == "N") {
+                        restart = false;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Matrices = new int[nbJoueur, 8];
+                        TabCroupier = new int[8];
+                        nbTour = 0;
+                    }
+                    //fin
+
                     
-                } while (restart == false);
-
-
-                //demander a l'utilisateur si il veut repiocher une carte ou rester ou doubler ou split 
-                //utiliser TourSuivant et alea carte dedans et faire la somme avec le mp sommeJoueur
-
-
-
-                
-
+                } while (restart);
 
             }
 
