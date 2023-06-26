@@ -10,11 +10,14 @@ namespace CEUUA11_2023_MassartNathan
             string choix;
             int a;
             int b;
-            string phClaire = "";
-            string phClef = "";
-            bool restart = true;
+            string phClaire;
+            string phClef;
+            string matrice;
+            string restart;
+            bool ok;
 
-            while (restart)
+          
+            do
             {
                 Console.WriteLine("                                             ---------------------------------------");
                 Console.WriteLine("                                                    Bienvenue dans le Cryptage");
@@ -23,64 +26,65 @@ namespace CEUUA11_2023_MassartNathan
                 Console.WriteLine("             ");
                 do
                 {
-                    Console.WriteLine("Menu : " +
+                        Console.WriteLine("Menu : " +
 
                     "\n    1. Cryptage Vigenere" +
                     "\n    2. Cryptage par affinement");
 
-                    choix = Console.ReadLine();
-                    if (choix == "1")
+                        choix = Console.ReadLine();
+                } while ((choix != "1") && (choix != "2"));
+                if (choix == "1")
+                {
+                    Console.WriteLine("Cryptage Vigenere");
+                    Console.Write("Entrez la phrase claire : ");
+                    phClaire = Console.ReadLine();
+                    do
                     {
-                        Console.WriteLine("Cryptage Vigenere");
-                        Console.Write("Entrez la phrase claire : ");
-                        phClaire = Console.ReadLine();
                         Console.Write("Entrez la clé : ");
                         phClef = Console.ReadLine();
-                        MesOutils.VerifierCle(phClef);
-                        string phClaireSSE;
-                        MesOutils.RetireEspaces(phClaire, out phClaireSSE);
-                        MesOutils.CryptVigenere(phClaire, phClef, out string[,] MatVigenere);
-                        for (int i = 0; i < MatVigenere.GetLength(0); i++)
-                        {
-                            for (int y = 0; y < MatVigenere.GetLength(1); y++)
-                            {
-                                Console.Write(MatVigenere[i, y] + "|");
-                            }
-                            Console.WriteLine("");
-                        }
-                        restart = false;
-                    }
-                    if (choix == "2")
+                        MesOutils.VerifierCle(phClef, out ok);
+                    } while (phClef == "" && ok == false);
+                    string phClaireSSE;
+                    MesOutils.RetireEspaces(phClaire, out phClaireSSE);
+                    MesOutils.CryptVinegere(phClaireSSE, phClef, out string[,] MatVigenere);
+                    MesOutils.ConcatenerMatrice(MatVigenere, out matrice);
+                    Console.WriteLine(matrice);
+                    Console.WriteLine("Voici votre phrase crypté :");
+                    MesOutils.ConcateneDerniereLigne(MatVigenere, out matrice);
+                    Console.WriteLine(matrice);
+                }
+                else if (choix == "2")
+                {
+                    Console.WriteLine("Cryptage Affine");
+                    Console.Write("Entrez la phrase claire : ");
+                    phClaire = Console.ReadLine();
+                    string phClaireSSE;
+                    MesOutils.RetireEspaces(phClaire, out phClaireSSE);
+                    do
                     {
-                        Console.WriteLine("Cryptage Affine");
-                        Console.Write("Entrez la phrase claire : ");
-                        phClaire = Console.ReadLine();
-                        Console.Write("Entrez la clé : ");
-                        phClef = Console.ReadLine();
-                        MesOutils.VerifierCle(phClef);
-                        string phClaireSSE;
-                        MesOutils.RetireEspaces(phClaire, out phClaireSSE);
-                        Console.Write("Entrez la a : ");
+                        Console.Write("Entrez le coéficient ");
                         MesOutils.LectureR("a : ", out a);
-                        Console.Write("Entrez la b : ");
-                        MesOutils.LectureR("b : ", out b);
-                        MesOutils.CryptAffine(phClaire, a, b, out string[,] MatAffine);
-                        for (int i = 0; i < MatAffine.GetLength(0); i++)
-                        {
-                            for (int y = 0; y < MatAffine.GetLength(1); y++)
-                            {
-                                Console.Write(MatAffine[i, y] + "|");
-                            }
-                            Console.WriteLine("");
-                        }
-                        restart = false;
-                    }
-                } while (restart == false);
-            }
 
-        } 
+                    } while (!((a >= 1 && a <= 25) && (a % 2 == 1) && (a != 13)));
+                    do
+                    {
+                        Console.Write("Entrez le coéficient ");
+                        MesOutils.LectureR("b : ", out b);
+
+                    } while (b<0 || b>26);
+                    MesOutils.CryptAffine(phClaire, a, b, out string[,] MatAffine);
+                    MesOutils.ConcatenerMatrice(MatAffine, out matrice);
+                    Console.WriteLine(matrice);
+                    Console.WriteLine("Voici votre phrase crypté :");
+                    MesOutils.ConcateneDerniereLigne(MatAffine, out matrice);
+                    Console.WriteLine(matrice);
+                }
+                Console.WriteLine("Voulez vous recommencer oui ou non ? (o = oui et autre = non)");
+                restart = Console.ReadLine();
+            } while (restart == "o");
 
             
-        }
+
+        } 
     }
 }

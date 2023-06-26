@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\220747\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ITN\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack.csproj",
+      "projectUniqueName": "H:\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack.csproj",
       "projectName": "5T23_MassartNathan_BlackJack",
-      "projectPath": "C:\\ITN\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\ITN\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\obj\\",
+      "projectPath": "H:\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack.csproj",
+      "packagesPath": "C:\\Users\\220747\\.nuget\\packages\\",
+      "outputPath": "H:\\UAA_12\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\5T23_MassartNathan_BlackJack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\220747\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
